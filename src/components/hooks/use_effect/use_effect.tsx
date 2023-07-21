@@ -1,13 +1,21 @@
-// make an api call using useEffect
+import { useEffect, useState } from 'react';
 
 export const APICall = () => {
 
-    // Your code here!
+    const [todo, setTodo] = useState({});
 
+    useEffect(() => {
+        fetch("https://jsonplaceholder.typicode.com/posts/1")
+            .then(response => response.json())
+            .then(json => setTodo(() => json));
+    }, []);
+
+    const printData = Object.entries(todo).map(([key, value]) => <p className={key}>{key + ': ' + value}</p>);
+    
     return (
         <>
             <h2>useEffect</h2>
-            <p>Your todo here!</p>
+            {printData}
         </>
     )
 }
