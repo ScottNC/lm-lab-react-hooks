@@ -10,7 +10,7 @@ export const APICall = () => {
             .then(json => setTodo(() => json));
     }, []);
 
-    const printData = Object.entries(todo).map(([key, value]) => <p className={key}>{key + ': ' + value}</p>);
+    const printData = Object.entries(todo).map(([key, value], idx) => <p className={key} key={idx}>{key + ': ' + value}</p>);
     
     return (
         <>
